@@ -1,9 +1,5 @@
 package gen2
 
-import (
-	"strings"
-)
-
 func UpperCase(s string) string {
 
 	char := []rune(s)
@@ -28,31 +24,16 @@ func LowerCase(s string) string {
 }
 
 func Capitalize(s string) string {
-	var newWord = make([]string, 0)
-
-	words := strings.Fields(s)
-	for _, word := range words {
-		char := []rune(word)
-		if char[0] >= 97 && char[0] <= 122 {
-			char[0] -= 32
+	chars := []rune(s)
+	for i := range chars {
+		if chars[0] >= 97 && chars[0] <= 122 {
+			chars[0] -= 32
+		} else if chars[i] == 32 {
+			if chars[i+1] >= 90 && chars[i+1] <= 122 {
+				chars[i+1] -= 32
+			}
 		}
-		word = string(char)
-		newWord = append(newWord, word)
-	}
-	return strings.Join(newWord, " ")
-}
-
-func CapitaliseWord(s string) string {
-	var newWord = make([]string, 0)
-
-	words := strings.Fields(s)
-	for i := range words {
-		char := []rune(words[i])
-		if char[0] >= 90 && char[0] <= 122 {
-			char[0] -= 32
-		}
-		newWord = append(newWord, string(char))
 	}
 
-	return strings.Join(newWord, " ")
+	return string(chars)
 }
