@@ -1,37 +1,45 @@
 package gen2
 
 func UpperCase(s string) string {
+	chars := []rune(s)
 
-	char := []rune(s)
-	for i := range char {
-		if char[i] >= 90 && char[i] <= 122 {
-			char[i] -= 32
+	for i := range chars {
+		if chars[i] >= 'a' && chars[i] <= 'z' {
+			chars[i] -= 'a' - 'A'
 		}
 	}
-	return string(char)
+
+	return string(chars)
 }
 
 func LowerCase(s string) string {
+	chars := []rune(s)
 
-	char := []rune(s)
-	for i := range char {
-		if char[i] >= 65 && char[i] <= 90 {
-			char[i] += 32
+	for i := range chars {
+		if chars[i] >= 'A' && chars[i] <= 'Z' {
+			chars[i] += 'a' - 'A'
 		}
-
 	}
-	return string(char)
+
+	return string(chars)
 }
 
 func Capitalize(s string) string {
 	chars := []rune(s)
-	for i := range chars {
-		if chars[0] >= 97 && chars[0] <= 122 {
-			chars[0] -= 32
-		} else if chars[i] == 32 {
-			if chars[i+1] >= 90 && chars[i+1] <= 122 {
-				chars[i+1] -= 32
-			}
+
+	if len(chars) == 0 {
+		return s
+	}
+
+	if chars[0] >= 'a' && chars[0] <= 'z' {
+		chars[0] -= 'a' - 'A'
+	}
+
+	for i := 0; i <= len(chars)-1; i++ {
+		if chars[i] == ' ' &&
+			chars[i+1] >= 'a' &&
+			chars[i+1] <= 'z' {
+			chars[i+1] -= 'a' - 'A'
 		}
 	}
 
