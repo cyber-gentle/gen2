@@ -1,4 +1,4 @@
-package gen2
+package stringutil
 
 func UpperCase(s string) string {
 	chars := []rune(s)

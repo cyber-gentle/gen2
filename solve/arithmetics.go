@@ -1,4 +1,4 @@
-package gen2
+package solve
 
 func Sum(n ...int) int {
 	var total int
