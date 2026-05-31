@@ -55,7 +55,7 @@ import (
 )
 
 func main() {
-	fmt.Println(solve.Add(2, 3))
+	fmt.Println(solve.Sum(2, 3))
 }
 ```
 
