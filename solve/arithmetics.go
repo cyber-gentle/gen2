@@ -1,19 +1,25 @@
 package solve
 
-func Sum(n ...int) int {
-	var total int
+func Sum(nums ...int) int {
+	total := 0
 
-	for i := range n {
-		total += n[i]
+	for _, num := range nums {
+		total += num
 	}
+
 	return total
 }
 
-func Difference(n ...int) int {
-	var total int = n[0]
-
-	for i := 1; i <= len(n)-1; i++ {
-		total -= n[i]
+func Difference(nums ...int) int {
+	if len(nums) == 0 {
+		return 0
 	}
+
+	total := nums[0]
+
+	for _, num := range nums[1:] {
+		total -= num
+	}
+
 	return total
 }
